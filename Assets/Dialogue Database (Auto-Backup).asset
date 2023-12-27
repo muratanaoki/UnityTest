@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: Dialogue Database
+  m_Name: Dialogue Database (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
@@ -249,8 +249,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 220.40118
-        y: 112.7964
+        x: 221
+        y: 112.1976
         width: 160
         height: 30
     - id: 2
@@ -299,7 +299,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 219
-        y: 162.79643
+        y: 161.5988
         width: 160
         height: 30
     entryGroups: []
