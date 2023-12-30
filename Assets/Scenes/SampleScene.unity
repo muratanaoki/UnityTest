@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &259322885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -250,12 +250,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259322884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdb0b002e08f40ae9a13971f21412b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refCamera: {fileID: 963194227}
+  refCamera: {fileID: 0}
   refRect: {fileID: 0}
   referenceResolution: {x: 1920, y: 1080}
   matchWidthOrHeight: 0
@@ -639,6 +639,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1837315114}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.cameraSettings.sequencerCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.continueButton
       value: 0
       objectReference: {fileID: 0}
@@ -666,6 +670,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_RenderMode
       value: 1
@@ -721,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &612325248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +843,7 @@ GameObject:
   - component: {fileID: 678761219}
   - component: {fileID: 678761218}
   - component: {fileID: 678761220}
+  - component: {fileID: 678761221}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -977,6 +986,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_hasFocus: 0
+--- !u!95 &678761221
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678761216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3493ccc4485c8430a81dd964702450ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &699387222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,9 +1501,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2733004
+    x: 0.3615589
     y: 0
-    width: 0.45339915
+    width: 0.27688217
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2110,7 +2140,8 @@ MonoBehaviour:
     mainPanel: {fileID: 494160378}
     dontDeactivateMainPanel: 0
     waitForMainPanelOpen: 0
-    subtitlePanels: []
+    subtitlePanels:
+    - {fileID: 1680445847}
     defaultNPCSubtitlePanel: {fileID: 1680445847}
     defaultPCSubtitlePanel: {fileID: 1680445847}
     allowOpenSubtitlePanelsOnStartConversation: 1
