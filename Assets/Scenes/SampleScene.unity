@@ -442,9 +442,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.35022938
+    x: 0.3504105
     y: 0
-    width: 0.2995412
+    width: 0.29917902
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -694,7 +694,7 @@ PrefabInstance:
       objectReference: {fileID: 1263951337}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.cameraSettings.defaultSequence
-      value: Delay({{end}})
+      value: AudioWait(entrytag); Delay({{end}})
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.cameraSettings.sequencerCamera
@@ -707,6 +707,10 @@ PrefabInstance:
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.minSubtitleSeconds
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.cameraSettings.defaultPlayerSequence
+      value: AudioWait(entrytag)
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.inputSettings.alwaysForceResponseMenu
@@ -3610,10 +3614,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 221152649496256238, guid: fa7c9822355164377a7a6ae75b2b6b68,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2118049798}
-    - targetCorrespondingSourceObject: {fileID: 221152649496256238, guid: fa7c9822355164377a7a6ae75b2b6b68,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2118049799}
     - targetCorrespondingSourceObject: {fileID: 221152649496256238, guid: fa7c9822355164377a7a6ae75b2b6b68,
         type: 3}
@@ -4191,19 +4191,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1777550829}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2118049798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770234611}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2c904502fa644caa5f307ab365edba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1770234611}
 --- !u!136 &2118049799
 CapsuleCollider:
   m_ObjectHideFlags: 0

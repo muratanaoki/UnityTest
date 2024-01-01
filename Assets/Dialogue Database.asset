@@ -247,7 +247,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(voice)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(voice)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -326,8 +326,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 158.85056
-        y: 132.14941
+        x: 159.99998
+        y: 133.29883
         width: 160
         height: 30
     - id: 3
