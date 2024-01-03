@@ -442,9 +442,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.30520314
+    x: 0.25631687
     y: 0
-    width: 0.38959372
+    width: 0.48736626
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -740,6 +740,10 @@ PrefabInstance:
       propertyPath: displaySettings.cameraSettings.keepCameraPositionAtConversationEnd
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11471062, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 168688, guid: e1b9c3a105ff74d039610e13ed5b021f, type: 3}
     - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Camera
       value: 
