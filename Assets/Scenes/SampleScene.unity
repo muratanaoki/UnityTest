@@ -442,9 +442,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.3504105
+    x: 0.00089746714
     y: 0
-    width: 0.29917902
+    width: 0.99820507
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 508489372}
-  aspectVec: {x: 540, y: 960}
+  aspectVec: {x: 430, y: 932}
 --- !u!1 &554034956
 GameObject:
   m_ObjectHideFlags: 0
@@ -4252,18 +4252,18 @@ MonoBehaviour:
   guiSkin: {fileID: 0}
   guiStyleName: label
   alignment: 1
-  textStyle: 1
-  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
-  inRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  textStyle: 0
+  textStyleColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  inRangeColor: {r: 0.48235297, g: 0.48235297, b: 0.48235297, a: 0}
+  outOfRangeColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   reticle:
     inRange: {fileID: 0}
     outOfRange: {fileID: 0}
     width: 64
     height: 64
-  useKey: 32
+  useKey: 0
   useButton: Fire2
-  defaultUseMessage: (spacebar to interact)
+  defaultUseMessage: 
   broadcastToChildren: 1
   actorTransform: {fileID: 0}
   tooFarMessage: 
