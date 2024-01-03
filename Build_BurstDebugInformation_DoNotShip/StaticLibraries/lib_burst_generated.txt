@@ -9,7 +9,6 @@ Library: /Users/unityProjects/UnityTest/Temp/BurstOutput/StaticLibraries/lib_bur
 --float-precision=Standard
 --target-framework=NetFramework
 --float-mode=Fast
---assembly-defines=Assembly-CSharp-firstpass;
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Cinemachine;
 --assembly-defines=FastSpringBone;
@@ -64,7 +63,6 @@ Library: /Users/unityProjects/UnityTest/Temp/BurstOutput/StaticLibraries/lib_bur
 --dump=Function
 --float-precision=Standard
 --target-framework=NetFramework
---assembly-defines=Assembly-CSharp-firstpass;
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Cinemachine;
 --assembly-defines=FastSpringBone;

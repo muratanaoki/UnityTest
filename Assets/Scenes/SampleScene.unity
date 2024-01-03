@@ -442,9 +442,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.25631687
+    x: 0.00089746714
     y: 0
-    width: 0.48736626
+    width: 0.99820507
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4266,7 +4266,7 @@ MonoBehaviour:
     width: 64
     height: 64
   useKey: 0
-  useButton: Fire2
+  useButton: Fire1
   defaultUseMessage: 
   broadcastToChildren: 1
   actorTransform: {fileID: 0}
