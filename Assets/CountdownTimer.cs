@@ -8,7 +8,7 @@ public class CountdownTimer : MonoBehaviour
     public Text countdownText; // カウントダウンの時間を表示するテキスト
     public Text endTimeText; // 終了時刻を表示するテキスト
     public Button startButton;
-    public GameObject sliderHandle;
+    public GameObject sliderHandle; // スライダーのハンドルへの参照
     public int maxTimeInMinutes = 120;
 
     private float initialTime;
@@ -57,7 +57,8 @@ public class CountdownTimer : MonoBehaviour
         {
             isCountingDown = true;
             startButton.GetComponentInChildren<Text>().text = "やめる";
-            sliderHandle.SetActive(false);
+            timeSlider.interactable = false; // スライダーを動かせなくする
+            sliderHandle.SetActive(false); // スライダーのハンドルを非表示にする
         }
     }
 
@@ -65,7 +66,8 @@ public class CountdownTimer : MonoBehaviour
     {
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "開始";
-        sliderHandle.SetActive(true);
+        timeSlider.interactable = true; // スライダーを再び動かせるようにする
+        sliderHandle.SetActive(true); // スライダーのハンドルを再表示する
         ResetTimer();
     }
 
