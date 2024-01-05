@@ -701,9 +701,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00017884374
+    x: 0.3213014
     y: 0
-    width: 0.9996423
+    width: 0.3573972
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4573,6 +4573,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2118049810}
+    - targetCorrespondingSourceObject: {fileID: 221152649496256238, guid: fa7c9822355164377a7a6ae75b2b6b68,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2118049818}
   m_SourcePrefab: {fileID: 100100000, guid: fa7c9822355164377a7a6ae75b2b6b68, type: 3}
 --- !u!1 &1830862243
 GameObject:
@@ -5410,6 +5414,19 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: a7289e92d87d147e0b1a9893ec04da5a, type: 2}
+--- !u!114 &2118049818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770234611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfcf98bf6ee94bf2949c22c995c0638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationTitle: New Conversation 1
 --- !u!224 &2120909306 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22425850, guid: 58ac37417e60e534f91138088a3e6f70,
