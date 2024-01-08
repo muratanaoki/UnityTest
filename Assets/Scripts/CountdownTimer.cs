@@ -65,7 +65,7 @@ public class CountdownTimer : MonoBehaviour
     void StopCountdown()
     {
         isCountingDown = false;
-        startButton.GetComponentInChildren<Text>().text = "開始";
+        startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true; // スライダーを再び動かせるようにする
         sliderHandle.SetActive(true); // スライダーのハンドルを再表示する
         ResetTimer();
