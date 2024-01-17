@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class UIManager : MonoBehaviour
         // ダイアログを非表示に設定
         dialog.SetActive(false);
     }
-
     // メニューボタンが押された時に呼ばれるメソッド
     public void OnMenuButtonClicked()
     {
