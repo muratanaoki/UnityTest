@@ -1,19 +1,50 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject dialog; // ダイアログとして表示するGameObject
+    public GameObject canvasMenuDialog;
+    public GameObject panelBlackoutCurtain;
+    public GameObject panelMenu;
+    public GameObject panelSupport;
 
     void Start()
     {
-        // ダイアログを非表示に設定
-        dialog.SetActive(false);
+        canvasMenuDialog.SetActive(false);
+        panelBlackoutCurtain.SetActive(false);
+        panelMenu.SetActive(false);
+        panelSupport.SetActive(false);
     }
-    // メニューボタンが押された時に呼ばれるメソッド
-    public void OnMenuButtonClicked()
+
+    // Panel Blackout Curtainがクリックされた時の処理
+    public void OnBlackoutCurtainClicked()
     {
-        // ダイアログの表示状態を切り替える
-        dialog.SetActive(!dialog.activeSelf);
+        if (panelSupport.activeSelf)
+        {
+            panelSupport.SetActive(false);
+        }
+        else
+        {
+            canvasMenuDialog.SetActive(false);
+        }
     }
+
+    // Panel Menu内のButton Supportがクリックされた時の処理
+    public void TogglePanelSupport()
+    {
+        panelSupport.SetActive(!panelSupport.activeSelf);
+    }
+
+    public void CloseCanvasMenuDialog()
+    {
+        canvasMenuDialog.SetActive(!canvasMenuDialog.activeSelf);
+    }
+
+    public void OpenCanvasMenuDialog()
+    {
+        canvasMenuDialog.SetActive(true);
+        panelBlackoutCurtain.SetActive(true);
+        panelMenu.SetActive(true);
+        panelSupport.SetActive(false);
+    }
+
 }
