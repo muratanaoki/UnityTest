@@ -5,10 +5,10 @@ using System;
 public class CountdownTimer : MonoBehaviour
 {
     public Slider timeSlider;
-    public Text countdownText; // カウントダウンの時間を表示するテキスト
-    public Text endTimeText; // 終了時刻を表示するテキスト
+    public Text countdownText;
+    public Text endTimeText;
     public Button startButton;
-    public GameObject sliderHandle; // スライダーのハンドルへの参照
+    public GameObject sliderHandle;
     public int maxTimeInMinutes = 120;
 
     private float initialTime;
@@ -17,6 +17,8 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         timeSlider.maxValue = maxTimeInMinutes / 5;
+        timeSlider.minValue = 1; // スライダーの最小値を1に設定（5分に相当）
+        timeSlider.value = 1; // 初期値を5分に設定
         timeSlider.wholeNumbers = true;
         timeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
         startButton.onClick.AddListener(StartCountdown);
@@ -42,9 +44,9 @@ public class CountdownTimer : MonoBehaviour
 
     void SliderChanged()
     {
-        initialTime = timeSlider.value * 5 * 60;
+        initialTime = Mathf.Max(5 * 60, timeSlider.value * 5 * 60); // 5分未満には設定できないようにする
         UpdateCountdownText();
-        SetEndTime(initialTime); // スライダーの値が変更されるたびに終了時刻を更新
+        SetEndTime(initialTime);
     }
 
     void StartCountdown()
@@ -57,8 +59,8 @@ public class CountdownTimer : MonoBehaviour
         {
             isCountingDown = true;
             startButton.GetComponentInChildren<Text>().text = "やめる";
-            timeSlider.interactable = false; // スライダーを動かせなくする
-            sliderHandle.SetActive(false); // スライダーのハンドルを非表示にする
+            timeSlider.interactable = false;
+            sliderHandle.SetActive(false);
         }
     }
 
@@ -66,8 +68,8 @@ public class CountdownTimer : MonoBehaviour
     {
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
-        timeSlider.interactable = true; // スライダーを再び動かせるようにする
-        sliderHandle.SetActive(true); // スライダーのハンドルを再表示する
+        timeSlider.interactable = true;
+        sliderHandle.SetActive(true);
         ResetTimer();
     }
 
