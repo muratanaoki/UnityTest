@@ -5,23 +5,24 @@ using System;
 public class CountdownTimer : MonoBehaviour
 {
     public Slider timeSlider;
-    public Text countdownText;
-    public Text endTimeText;
+    public Text countdownText; // カウントダウンの時間を表示するテキスト
+    public Text endTimeText; // 終了時刻を表示するテキスト
     public Button startButton;
-    public GameObject sliderHandle;
-    public int maxTimeInMinutes = 120;
+    public GameObject sliderHandle; // スライダーのハンドルへの参照
+    public int maxTimeInMinutes; 
 
     private float initialTime;
     private bool isCountingDown = false;
+    private float initialSliderValue = 1; // スライダーの初期位置を保持する変数（1 = 5分）
 
     void Start()
     {
         timeSlider.maxValue = maxTimeInMinutes / 5;
         timeSlider.minValue = 1; // スライダーの最小値を1に設定（5分に相当）
-        timeSlider.value = 1; // 初期値を5分に設定
+        timeSlider.value = initialSliderValue; // 初期位置にスライダーの値を設定
         timeSlider.wholeNumbers = true;
         timeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
-        startButton.onClick.AddListener(StartCountdown);
+        startButton.onClick.AddListener(ToggleCountdown); // "やめる"と"スタート"の切り替えを行うメソッド
         SliderChanged(); // スライダーの初期値に基づいてテキストを更新
     }
 
@@ -44,12 +45,12 @@ public class CountdownTimer : MonoBehaviour
 
     void SliderChanged()
     {
-        initialTime = Mathf.Max(5 * 60, timeSlider.value * 5 * 60); // 5分未満には設定できないようにする
+        initialTime = timeSlider.value * 5 * 60;
         UpdateCountdownText();
         SetEndTime(initialTime);
     }
 
-    void StartCountdown()
+    void ToggleCountdown()
     {
         if (isCountingDown)
         {
@@ -57,11 +58,16 @@ public class CountdownTimer : MonoBehaviour
         }
         else
         {
-            isCountingDown = true;
-            startButton.GetComponentInChildren<Text>().text = "やめる";
-            timeSlider.interactable = false;
-            sliderHandle.SetActive(false);
+            StartCountdown();
         }
+    }
+
+    void StartCountdown()
+    {
+        isCountingDown = true;
+        startButton.GetComponentInChildren<Text>().text = "やめる";
+        timeSlider.interactable = false;
+        sliderHandle.SetActive(false);
     }
 
     void StopCountdown()
@@ -70,12 +76,12 @@ public class CountdownTimer : MonoBehaviour
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;
         sliderHandle.SetActive(true);
+        timeSlider.value = initialSliderValue; // "やめる"が押されたら、スライダーを初期位置に戻す
         ResetTimer();
     }
 
     void ResetTimer()
     {
-        timeSlider.value = Mathf.RoundToInt(initialTime / 60 / 5);
         initialTime = timeSlider.value * 5 * 60;
         UpdateCountdownText();
     }
