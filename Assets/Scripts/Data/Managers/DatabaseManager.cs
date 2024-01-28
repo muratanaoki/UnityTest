@@ -13,15 +13,16 @@ public class DatabaseManager : IDatabaseManager
         _connection.CreateTable<WorkLog>();
     }
 
-    public void InitializeUserSettings(string playFabUserId)
+    public void InitializeUserSettings()
     {
-        var userSettings = GetUserSetting(playFabUserId);
+        string userId = UserSessionManager.Instance.UserId;
+        var userSettings = GetUserSetting();
         if (userSettings == null)
         {
             InsertUserSetting(new UserSetting
             {
-                UserID = playFabUserId,
-                DefaultFocusTime = 25,
+                UserID = userId,
+                DefaultFocusTime = 5,
                 DefaultMaxTime = 120,
                 DefaultMainBGM = "初期BGM",
                 DefaultVoice = "初期ボイス",
@@ -40,14 +41,16 @@ public class DatabaseManager : IDatabaseManager
         _connection.Update(userSetting);
     }
 
-    public UserSetting GetUserSetting(string userId)
+    public UserSetting GetUserSetting()
     {
+        string userId = UserSessionManager.Instance.UserId;
         return _connection.Table<UserSetting>().FirstOrDefault(u => u.UserID == userId);
     }
 
-    public void DeleteUserSetting(string userId)
+    public void DeleteUserSetting()
     {
-        var userSetting = GetUserSetting(userId);
+        string userId = UserSessionManager.Instance.UserId;
+        var userSetting = GetUserSetting();
         if (userSetting != null)
         {
             _connection.Delete(userSetting);
@@ -59,14 +62,15 @@ public class DatabaseManager : IDatabaseManager
         _connection.Insert(workLog);
     }
 
-    public List<WorkLog> GetWorkLogs(string userId)
-    {
-        return _connection.Table<WorkLog>().Where(w => w.UserID == userId).ToList();
-    }
-
     public void UpdateWorkLog(WorkLog workLog)
     {
         _connection.Update(workLog);
+    }
+
+    public List<WorkLog> GetWorkLogs()
+    {
+        string userId = UserSessionManager.Instance.UserId;
+        return _connection.Table<WorkLog>().Where(w => w.UserID == userId).ToList();
     }
 
     public void DeleteWorkLog(int logId)
@@ -78,3 +82,4 @@ public class DatabaseManager : IDatabaseManager
         }
     }
 }
+

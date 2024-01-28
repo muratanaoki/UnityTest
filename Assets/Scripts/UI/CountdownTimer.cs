@@ -21,13 +21,22 @@ public class CountdownTimer : MonoBehaviour
 
     void Start()
     {
+        // データベースからユーザー設定を取得します。
+        UserSetting userSettings = _databaseManager.GetUserSetting();
+        if (userSettings != null)
+        {
+            // データベースから取得した設定を使用してスライダーの値を設定します。
+            maxTimeInMinutes = userSettings.DefaultMaxTime;
+            initialSliderValue = userSettings.DefaultFocusTime / 5f; // 仮定：DefaultFocusTime は分単位です
+        }
+
         timeSlider.maxValue = maxTimeInMinutes / 5;
-        timeSlider.minValue = 1; // スライダーの最小値を1に設定（5分に相当）
-        timeSlider.value = initialSliderValue; // 初期位置にスライダーの値を設定
+        timeSlider.minValue = 1;
+        timeSlider.value = initialSliderValue;
         timeSlider.wholeNumbers = true;
         timeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
-        startButton.onClick.AddListener(ToggleCountdown); // "やめる"と"スタート"の切り替えを行うメソッド
-        SliderChanged(); // スライダーの初期値に基づいてテキストを更新
+        startButton.onClick.AddListener(ToggleCountdown);
+        SliderChanged(); // スライダーの初期値に基づいてテキストを更新します。
     }
 
     void Update()

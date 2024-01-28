@@ -2,7 +2,7 @@
 
 public class UserSetting
 {
-    [PrimaryKey, AutoIncrement]
+    [PrimaryKey]
     public string UserID { get; set; }
     public int DefaultFocusTime { get; set; }
     public int DefaultMaxTime { get; set; }

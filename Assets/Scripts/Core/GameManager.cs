@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // プレイヤーのIDを取得するロジックが必要です。
-        // 例えば、ログインプロセスから取得したり、プレイヤープリファレンスから読み込んだりします。
-        string playFabUserId = GetPlayFabUserId();
+        // UserSessionManagerを通じてプレイヤーのIDを取得し、初期化します。
+        UserSessionManager.Instance.Initialize(GetPlayFabUserId());
 
         // データベースマネージャーを使ってユーザー設定を初期化します。
-        _databaseManager.InitializeUserSettings(playFabUserId);
+        _databaseManager.InitializeUserSettings();
     }
 
     private string GetPlayFabUserId()
