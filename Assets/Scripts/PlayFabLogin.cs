@@ -1,20 +1,22 @@
-
-
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
 
 
-
-
+[System.Serializable]
 public class GachaMaster
 {
-    public int ID { get; set; }
-    public string Name { get; set; }
-    public int Rank { get; set; }
-    public int Rate { get; set; }
+    public int ID;
+    public string Name;
+    public int Rank;
+    public int Rate;
 }
 
+[System.Serializable]
+public class GachaMasterArray
+{
+    public GachaMaster[] items;
+}
 
 
 public class PlayFabLogin : MonoBehaviour
@@ -27,7 +29,13 @@ public class PlayFabLogin : MonoBehaviour
         void OnSuccess(GetTitleDataResult result)
         {
             Debug.Log("GetTitleData: Success!");
-            Debug.Log(result.Data["GachaMaster"]);
+            GachaMasterArray gachaMasterArray = JsonUtility.FromJson<GachaMasterArray>("{\"items\":" + result.Data["GachaMaster"] + "}");
+            foreach (var master in gachaMasterArray.items)
+            {
+                Debug.Log(master.Name);
+            }
+
+            //Debug.Log(result.Data["GachaMaster"]);
         }
 
         void OnError(PlayFabError error)
