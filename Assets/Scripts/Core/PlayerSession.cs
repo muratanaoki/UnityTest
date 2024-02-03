@@ -1,29 +1,52 @@
-public class PlayerSession
-{
-    public PlayerProfile Profile { get; private set; }
-    public ButlerDataContainer ButlerContainer { get; private set; }
-    public string PlayFabId { get; private set; }
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-    // シングルトンパターンの実装
+public class PlayerSession : MonoBehaviour
+{
     private static PlayerSession instance;
     public static PlayerSession Instance
     {
-        get
+        get { return instance; }
+    }
+
+    public event Action OnDataUpdated; // データ更新の通知用イベント
+
+    public PlayerProfile Profile { get; private set; }
+    public List<ButlerData> ButlerContainer { get; private set; }
+    public ButlerData CurrentButlerData { get; private set; }
+
+    private void Awake()
+    {
+        if (instance == null)
         {
-            if (instance == null)
-            {
-                instance = new PlayerSession();
-            }
-            return instance;
+            instance = this;
+            DontDestroyOnLoad(gameObject); // シーン遷移しても破棄されないようにする
+            ButlerContainer = new List<ButlerData>();
         }
-    }   
+        else if (instance != this)
+        {
+            Destroy(gameObject); // 重複インスタンスの破棄
+        }
+    }
 
-    private PlayerSession() { }
-
-    public void Initialize(PlayerProfile profile, ButlerDataContainer butlerContainer, string playFabId)
+    public void SetProfile(PlayerProfile profile)
     {
         Profile = profile;
-        ButlerContainer = butlerContainer;
-        PlayFabId = playFabId; // PlayFabIDを初期化
+    }
+
+    public void SetButlerContainer(List<ButlerData> container)
+    {
+        ButlerContainer = container;
+    }
+
+    public void SetCurrentButlerData(ButlerData butlerData)
+    {
+        CurrentButlerData = butlerData;
+    }
+
+    public void NotifyDataUpdated()
+    {
+        OnDataUpdated?.Invoke();
     }
 }
