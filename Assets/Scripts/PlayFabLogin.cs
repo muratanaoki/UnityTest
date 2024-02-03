@@ -1,74 +1,78 @@
+using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
+using PlayFab.Json;
 using UnityEngine;
-
-
-[System.Serializable]
-public class GachaMaster
-{
-    public int ID;
-    public string Name;
-    public int Rank;
-    public int Rate;
-}
-
-[System.Serializable]
-public class GachaMasterArray
-{
-    public GachaMaster[] items;
-}
 
 
 public class PlayFabLogin : MonoBehaviour
 {
-    public static void GetTitleData()
+    // PlayerProfileの定義は前の例と同じ
+
+    public static void GetPlayerData()
     {
-        var request = new GetTitleDataRequest();
-        PlayFabClientAPI.GetTitleData(request, OnSuccess, OnError);
-
-        void OnSuccess(GetTitleDataResult result)
-        {
-            Debug.Log("GetTitleData: Success!");
-            GachaMasterArray gachaMasterArray = JsonUtility.FromJson<GachaMasterArray>("{\"items\":" + result.Data["GachaMaster"] + "}");
-            foreach (var master in gachaMasterArray.items)
-            {
-                Debug.Log(master.Name);
-            }
-
-            //Debug.Log(result.Data["GachaMaster"]);
-        }
-
-        void OnError(PlayFabError error)
-        {
-            Debug.Log("GetTitleData: Fail...");
-            Debug.Log(error.GenerateErrorReport());
-        }
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
     }
 
-    public void Start()
+    // プレイヤーデータ受信時の処理
+    private static void OnDataReceived(GetUserDataResult result)
+    {
+        Debug.Log("Player Data received successfully!");
+
+        PlayerProfile profile = null;
+        ButlerDataContainer butlerContainer = new ButlerDataContainer();
+
+        if (result.Data.ContainsKey("PlayerProfile"))
+        {
+            profile = PlayFabSimpleJson.DeserializeObject<PlayerProfile>(result.Data["PlayerProfile"].Value);
+            Debug.Log("Player Profile: " + profile.Username + ", " + profile.Email + ", " + profile.DateOfBirth + ", " + profile.Gender);
+        }
+
+        if (result.Data.ContainsKey("ButlerData"))
+        {
+            butlerContainer.butlers = PlayFabSimpleJson.DeserializeObject<Dictionary<string, ButlerData>>(result.Data["ButlerData"].Value);
+        }
+
+        // セッションデータの初期化
+        PlayerSession.Instance.Initialize(profile, butlerContainer, PlayerSession.Instance.PlayFabId);
+    }
+
+    // OnErrorメソッドとStartメソッドは前の例と同じ
+
+
+    // エラー発生時のコールバック
+    private static void OnError(PlayFabError error)
+    {
+        Debug.LogError("Something went wrong with your API call.");
+        Debug.LogError(error.GenerateErrorReport());
+    }
+
+    // ゲーム開始時に呼び出される
+    void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
         {
-            /*
-            Please change the titleId below to your own titleId from PlayFab Game Manager.
-            If you have already set the value in the Editor Extensions, this can be skipped.
-            */
+            // あなたのTitleIdに設定してください。
             PlayFabSettings.staticSettings.TitleId = "42";
         }
         var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true };
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
     }
 
+    // ログイン成功時のコールバック
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Congratulations, you made your first successful API call!");
-        GetTitleData();
+        Debug.Log("Logged in successfully!");
+        Debug.Log("PlayFabID: " + result.PlayFabId);
+        // プレイヤーデータの取得を試みる
+        GetPlayerData();
+        PlayerSession.Instance.Initialize(null, null, result.PlayFabId);
     }
 
+    // ログイン失敗時のコールバック
     private void OnLoginFailure(PlayFabError error)
     {
-        Debug.LogWarning("Something went wrong with your first API call.  :(");
-        Debug.LogError("Here's some debug information:");
+        Debug.LogWarning("Failed to log in");
         Debug.LogError(error.GenerateErrorReport());
     }
 }
