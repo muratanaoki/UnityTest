@@ -70,31 +70,38 @@ public class PlayFabDataManager : MonoBehaviour
         }, error => Debug.LogError(error.GenerateErrorReport()));
     }
 
-    public void UpdateButlerExperienceAndIntimacy(string butlerId, int newExperiencePoints, int newIntimacyLevel)
+    public void UpdateButlerExperienceAndIntimacy(int newExperiencePoints, int newIntimacyLevel)
     {
-        // PlayerSessionから現在の執事データを検索
-        ButlerData butlerData = PlayerSession.Instance.ButlerContainer.Find(butler => butler.ButlerID == butlerId);
+        ButlerData butlerData = PlayerSession.Instance.CurrentButlerData;
         if (butlerData != null)
         {
-            // データを更新
-            butlerData.ExperiencePoints = newExperiencePoints;
-            butlerData.IntimacyLevel = newIntimacyLevel;
+            // 更新データのコピーを作成
+            ButlerData updatedButlerData = new ButlerData(butlerData)
+            {
+                ExperiencePoints = newExperiencePoints,
+                IntimacyLevel = newIntimacyLevel
+            };
 
-            // 必要に応じて、ここでPlayerSessionに更新を通知
-            PlayerSession.Instance.NotifyDataUpdated();
+            // JSONデータを更新
+            var butlers = new List<ButlerData>(PlayerSession.Instance.ButlerContainer);
+            int index = butlers.FindIndex(b => b.ButlerID == butlerData.ButlerID);
+            if (index != -1)
+            {
+                butlers[index] = updatedButlerData; // コピーをリストにセット
+            }
+            var updatedButlersJson = PlayFabSimpleJson.SerializeObject(butlers);
 
-            // PlayFabにデータを更新する
-            var updatedButlersJson = PlayFabSimpleJson.SerializeObject(PlayerSession.Instance.ButlerContainer);
             var updateRequest = new UpdateUserDataRequest
             {
-                Data = new Dictionary<string, string>
-            {
-                { "ButlerData", updatedButlersJson }
-            }
+                Data = new Dictionary<string, string> { { "ButlerData", updatedButlersJson } }
             };
 
             PlayFabClientAPI.UpdateUserData(updateRequest, result =>
             {
+                // PlayFab更新成功後にローカルセッションデータを更新
+                PlayerSession.Instance.SetButlerContainer(butlers); // コンテナ全体を更新
+                PlayerSession.Instance.SetCurrentButlerData(updatedButlerData); // 現在の執事データを更新
+                PlayerSession.Instance.NotifyDataUpdated();
                 Debug.Log("Butler data updated successfully in PlayFab.");
             }, error =>
             {

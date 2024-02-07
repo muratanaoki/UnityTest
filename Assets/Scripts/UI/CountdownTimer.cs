@@ -16,9 +16,6 @@ public class CountdownTimer : MonoBehaviour
     private bool isCountingDown = false;
     private float initialSliderValue = 1; // スライダーの初期位置を保持する変数（1 = 5分）
 
-    // PlayerProgressManagerの参照を追加
-    public PlayerProgressManager progressManager;
-
     [Inject]
     private IDatabaseManager _databaseManager;
 
@@ -100,13 +97,11 @@ public class CountdownTimer : MonoBehaviour
         timeSlider.interactable = true;
         sliderHandle.SetActive(true);
 
-        // ここで経験値の加算を行う
-        if (progressManager != null)
-        {
-            int gainedExperience = CalculateExperienceFromTime(initialTime);
-            progressManager.AddExperience(gainedExperience);
-            PlayFabDataManager.Instance.UpdateButlerExperienceAndIntimacy(PlayerSession.Instance.CurrentButlerData.ButlerID, progressManager.ExperiencePoints, progressManager.Level);
-        }
+        // TODO：デバッグ
+        // int gainedExperience = CalculateExperienceFromTime(initialTime);
+        int gainedExperience = 1000;
+        var (newLevel, newExperiencePoints) = PlayerProgressManager.CalculateNewPlayerState(PlayerSession.Instance.CurrentButlerData.IntimacyLevel, PlayerSession.Instance.CurrentButlerData.ExperiencePoints, gainedExperience);
+        PlayFabDataManager.Instance.UpdateButlerExperienceAndIntimacy(newExperiencePoints, newLevel);
 
         timeSlider.value = initialSliderValue; // "やめる"が押されたら、スライダーを初期位置に戻す
         ResetTimer();

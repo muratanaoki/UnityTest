@@ -1,56 +1,43 @@
-﻿public class PlayerProgressManager
+﻿public static class PlayerProgressManager
 {
-    public int Level { get; private set; } = 1;
-    public int ExperiencePoints { get; private set; } = 0;
-    public int ExperienceToNextLevel { get; private set; }
-    public const int MaxLevel = 30;
+    private const int MaxLevel = 30;
 
-    public PlayerProgressManager()
+    // 現在のレベル、経験値、追加経験値を引数に取り、更新されたレベルと経験値をタプルで返します
+    public static (int NewLevel, int NewExperiencePoints) CalculateNewPlayerState(int currentLevel, int currentExperiencePoints, int experienceToAdd)
     {
-        UpdateExperienceToNextLevel();
-    }
+        var newExperiencePoints = currentExperiencePoints + experienceToAdd;
+        var newLevel = currentLevel;
 
-    // 経験値を追加し、レベルアップ処理を行う
-    public void AddExperience(int hours)
-    {
-        if (Level >= MaxLevel)
+        while (newExperiencePoints >= GetExperienceToNextLevel(newLevel) && newLevel < MaxLevel)
         {
-            return; // 既に最大レベルに達している場合は処理を行わない
-        }
-
-        ExperiencePoints += hours; // 経験値を追加
-
-        while (ExperiencePoints >= ExperienceToNextLevel)
-        {
-            ExperiencePoints -= ExperienceToNextLevel; // 次レベルに必要な経験値を引く
-            Level++; // レベルアップ
-            UpdateExperienceToNextLevel(); // 次のレベルに必要な経験値を更新
-
-            if (Level == MaxLevel)
+            newExperiencePoints -= GetExperienceToNextLevel(newLevel);
+            newLevel++;
+            if (newLevel >= MaxLevel)
             {
-                break; // 最大レベルに達したらループを終了
+                // 最大レベルに達したらループを抜け、経験値の加算を止める
+                newExperiencePoints = System.Math.Min(newExperiencePoints, GetExperienceToNextLevel(MaxLevel) - 1);
+                break;
             }
         }
+
+        return (newLevel, newExperiencePoints);
     }
 
-    private void UpdateExperienceToNextLevel()
+    // レベルアップに必要な経験値を計算するメソッド
+    private static int GetExperienceToNextLevel(int level)
     {
-        // レベルアップに必要な経験値（時間）を計算
-        if (Level <= 5)
+        if (level <= 5)
         {
-            ExperienceToNextLevel = 5; // レベル1から5まで: 各レベルアップに5時間
+            return 100 * level; // レベル1~5までは、レベルごとに100ポイントずつ必要
         }
-        else if (Level <= 10)
+        else if (level <= 10)
         {
-            ExperienceToNextLevel = 10; // レベル6から10まで: 各レベルアップに10時間
+            return 500 + 200 * (level - 5); // レベル6~10では、追加で200ポイントずつ
         }
-        else if (Level <= 20)
-        {
-            ExperienceToNextLevel = 20; // レベル11から20まで: 各レベルアップに20時間
-        }
+        // さらに高いレベルの計算ロジックを追加
         else
         {
-            ExperienceToNextLevel = 30; // レベル21から30まで: 各レベルアップに30時間
+            return 1500 + 300 * (level - 10); // レベル11以上では、追加で300ポイントずつ
         }
     }
 }
