@@ -69,5 +69,42 @@ public class PlayFabDataManager : MonoBehaviour
             PlayerSession.Instance.NotifyDataUpdated();
         }, error => Debug.LogError(error.GenerateErrorReport()));
     }
+
+    public void UpdateButlerExperienceAndIntimacy(string butlerId, int newExperiencePoints, int newIntimacyLevel)
+    {
+        // PlayerSessionから現在の執事データを検索
+        ButlerData butlerData = PlayerSession.Instance.ButlerContainer.Find(butler => butler.ButlerID == butlerId);
+        if (butlerData != null)
+        {
+            // データを更新
+            butlerData.ExperiencePoints = newExperiencePoints;
+            butlerData.IntimacyLevel = newIntimacyLevel;
+
+            // 必要に応じて、ここでPlayerSessionに更新を通知
+            PlayerSession.Instance.NotifyDataUpdated();
+
+            // PlayFabにデータを更新する
+            var updatedButlersJson = PlayFabSimpleJson.SerializeObject(PlayerSession.Instance.ButlerContainer);
+            var updateRequest = new UpdateUserDataRequest
+            {
+                Data = new Dictionary<string, string>
+            {
+                { "ButlerData", updatedButlersJson }
+            }
+            };
+
+            PlayFabClientAPI.UpdateUserData(updateRequest, result =>
+            {
+                Debug.Log("Butler data updated successfully in PlayFab.");
+            }, error =>
+            {
+                Debug.LogError("Failed to update butler data in PlayFab: " + error.GenerateErrorReport());
+            });
+        }
+        else
+        {
+            Debug.LogError("ButlerID not found in session data.");
+        }
+    }
 }
 

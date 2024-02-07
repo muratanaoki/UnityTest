@@ -21,7 +21,6 @@ public class LevelManager : MonoBehaviour
         PlayerSession.Instance.OnDataUpdated -= UpdateUIFromSession;
     }
 
-
     private void UpdateUIFromSession()
     {
         // PlayerSessionから現在のButlerDataを取得
@@ -30,7 +29,7 @@ public class LevelManager : MonoBehaviour
         {
             // UIコンポーネントにデータを設定
             experiencePoints.value = butlerData.ExperiencePoints;
-            intimacyLevel.text = $"Intimacy Level: {butlerData.IntimacyLevel}";
+            intimacyLevel.text = butlerData.IntimacyLevel.ToString();
         }
     }
 }

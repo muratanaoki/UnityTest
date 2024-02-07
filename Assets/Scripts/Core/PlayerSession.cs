@@ -12,6 +12,7 @@ public class PlayerSession : MonoBehaviour
 
     public event Action OnDataUpdated; // データ更新の通知用イベント
 
+    public string PlayFabId { get; private set; }
     public PlayerProfile Profile { get; private set; }
     public List<ButlerData> ButlerContainer { get; private set; }
     public ButlerData CurrentButlerData { get; private set; }
@@ -28,6 +29,12 @@ public class PlayerSession : MonoBehaviour
         {
             Destroy(gameObject); // 重複インスタンスの破棄
         }
+    }
+
+    // PlayFabIdをセットするメソッド
+    public void SetPlayFabId(string id)
+    {
+        PlayFabId = id;
     }
 
     public void SetProfile(PlayerProfile profile)

@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
-using PlayFab.Json;
 using UnityEngine;
 
 
@@ -19,25 +17,7 @@ public class PlayFabLogin : MonoBehaviour
     {
         Debug.Log("Player Data received successfully!");
 
-        //PlayerProfile profile = null;
-        //ButlerDataContainer butlerContainer = new ButlerDataContainer();
-
-        //if (result.Data.ContainsKey("PlayerProfile"))
-        //{
-        //    profile = PlayFabSimpleJson.DeserializeObject<PlayerProfile>(result.Data["PlayerProfile"].Value);
-        //    Debug.Log("Player Profile: " + profile.Username + ", " + profile.Email + ", " + profile.DateOfBirth + ", " + profile.Gender);
-        //}
-
-        //if (result.Data.ContainsKey("ButlerData"))
-        //{
-        //    butlerContainer.butlers = PlayFabSimpleJson.DeserializeObject<Dictionary<string, ButlerData>>(result.Data["ButlerData"].Value);
-        //}
-
-        // セッションデータの初期化
-        //PlayerSession.Instance.Initialize(profile, butlerContainer, PlayerSession.Instance.PlayFabId);
     }
-
-    // OnErrorメソッドとStartメソッドは前の例と同じ
 
 
     // エラー発生時のコールバック
@@ -65,7 +45,7 @@ public class PlayFabLogin : MonoBehaviour
         Debug.Log("Logged in successfully!");
         Debug.Log("PlayFabID: " + result.PlayFabId);
         // プレイヤーデータの取得を試みる
-        //GetPlayerData();
+        PlayerSession.Instance.SetPlayFabId(result.PlayFabId);
         PlayFabDataManager.Instance.GetPlayerProfile();
         PlayFabDataManager.Instance.GetButlerData();
     }
