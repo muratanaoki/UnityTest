@@ -6,28 +6,26 @@ using Zenject;
 public class CountdownTimer : MonoBehaviour
 {
     public Slider timeSlider;
-    public Text countdownText; // カウントダウンの時間を表示するテキスト
-    public Text endTimeText; // 終了時刻を表示するテキスト
+    public Text countdownText;
+    public Text endTimeText;
     public Button startButton;
-    public GameObject sliderHandle; // スライダーのハンドルへの参照
+    public GameObject sliderHandle;
     public int maxTimeInMinutes;
 
     private float initialTime;
     private bool isCountingDown = false;
-    private float initialSliderValue = 1; // スライダーの初期位置を保持する変数（1 = 5分）
+    private float initialSliderValue = 1;
 
     [Inject]
     private IDatabaseManager _databaseManager;
 
     void Start()
     {
-        // データベースからユーザー設定を取得します。
         UserSetting userSettings = _databaseManager.GetUserSetting();
         if (userSettings != null)
         {
-            // データベースから取得した設定を使用してスライダーの値を設定します。
             maxTimeInMinutes = userSettings.DefaultMaxTime;
-            initialSliderValue = userSettings.DefaultFocusTime / 5f; // 仮定：DefaultFocusTime は分単位です
+            initialSliderValue = userSettings.DefaultFocusTime / 5f;
         }
 
         timeSlider.maxValue = maxTimeInMinutes / 5;
@@ -36,7 +34,7 @@ public class CountdownTimer : MonoBehaviour
         timeSlider.wholeNumbers = true;
         timeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
         startButton.onClick.AddListener(ToggleCountdown);
-        SliderChanged(); // スライダーの初期値に基づいてテキストを更新します。
+        SliderChanged();
     }
 
     void Update()
@@ -51,7 +49,7 @@ public class CountdownTimer : MonoBehaviour
             }
             else
             {
-                StopCountdown();
+                StopCountdown(true); // カウントダウンが自然に終了したことを示すために true を渡す
             }
         }
     }
@@ -67,7 +65,7 @@ public class CountdownTimer : MonoBehaviour
     {
         if (isCountingDown)
         {
-            StopCountdown();
+            StopCountdown(false); // ユーザーが 'やめる' を押したことを示すために false を渡す
         }
         else
         {
@@ -83,27 +81,22 @@ public class CountdownTimer : MonoBehaviour
         sliderHandle.SetActive(false);
     }
 
-    // カウントダウンタイマーの時間から経験値を計算するメソッド
-    int CalculateExperienceFromTime(float time)
-    {
-        // タイマー1分毎に1ポイントの経験値を与える
-        return Mathf.FloorToInt(time / 60);
-    }
-
-    void StopCountdown()
+    // StopCountdown に bool パラメータを追加して、カウントダウンの完了状態を示します
+    void StopCountdown(bool completed)
     {
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;
         sliderHandle.SetActive(true);
 
-        // TODO：デバッグ
-        // int gainedExperience = CalculateExperienceFromTime(initialTime);
-        int gainedExperience = 1000;
-        var (newLevel, newExperiencePoints) = PlayerProgressManager.CalculateNewPlayerState(PlayerSession.Instance.CurrentButlerData.IntimacyLevel, PlayerSession.Instance.CurrentButlerData.ExperiencePoints, gainedExperience);
-        PlayFabDataManager.Instance.UpdateButlerExperienceAndIntimacy(newExperiencePoints, newLevel);
+        if (completed)
+        {
+            int gainedExperience = CalculateExperienceFromTime(initialTime);
+            var (newLevel, newExperiencePoints) = PlayerProgressManager.CalculateNewPlayerState(PlayerSession.Instance.CurrentButlerData.IntimacyLevel, PlayerSession.Instance.CurrentButlerData.ExperiencePoints, gainedExperience);
+            PlayFabDataManager.Instance.UpdateButlerExperienceAndIntimacy(newExperiencePoints, newLevel);
+        }
 
-        timeSlider.value = initialSliderValue; // "やめる"が押されたら、スライダーを初期位置に戻す
+        timeSlider.value = initialSliderValue;
         ResetTimer();
     }
 
@@ -129,5 +122,8 @@ public class CountdownTimer : MonoBehaviour
         endTimeText.text = "終了時刻: " + endTime.ToString("HH:mm");
     }
 
-
+    int CalculateExperienceFromTime(float time)
+    {
+        return Mathf.FloorToInt(time / 60);
+    }
 }
