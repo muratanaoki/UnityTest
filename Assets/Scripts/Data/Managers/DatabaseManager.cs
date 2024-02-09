@@ -6,6 +6,8 @@ public class DatabaseManager : IDatabaseManager
 {
     private SQLiteConnection _connection;
 
+    private string userId;
+
     public DatabaseManager(string databasePath)
     {
         _connection = new SQLiteConnection(databasePath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
@@ -13,9 +15,9 @@ public class DatabaseManager : IDatabaseManager
         _connection.CreateTable<WorkLog>();
     }
 
-    public void InitializeUserSettings()
+    public void InitializeUserSettings(string userId)
     {
-        string userId = UserSessionManager.Instance.UserId;
+        this.userId = userId;
         var userSettings = GetUserSetting();
         if (userSettings == null)
         {
@@ -36,20 +38,64 @@ public class DatabaseManager : IDatabaseManager
         _connection.Insert(userSetting);
     }
 
-    public void UpdateUserSetting(UserSetting userSetting)
+    public void UpdateDefaultFocusTime(int newDefaultFocusTime)
     {
-        _connection.Update(userSetting);
+        var userSetting = GetUserSetting();
+        if (userSetting != null)
+        {
+            userSetting.DefaultFocusTime = newDefaultFocusTime;
+            _connection.Update(userSetting);
+        }
     }
+
+    public void UpdateDefaultMaxTime(int newDefaultMaxTime)
+    {
+        var userSetting = GetUserSetting();
+        if (userSetting != null)
+        {
+            userSetting.DefaultMaxTime = newDefaultMaxTime;
+            _connection.Update(userSetting);
+        }
+    }
+
+    public void UpdateDefaultMainBGM(string newDefaultMainBGM)
+    {
+        var userSetting = GetUserSetting();
+        if (userSetting != null)
+        {
+            userSetting.DefaultMainBGM = newDefaultMainBGM;
+            _connection.Update(userSetting);
+        }
+    }
+
+    public void UpdateDefaultVoice(string newDefaultVoice)
+    {
+        var userSetting = GetUserSetting();
+        if (userSetting != null)
+        {
+            userSetting.DefaultVoice = newDefaultVoice;
+            _connection.Update(userSetting);
+        }
+    }
+
+    public void UpdateDefaultWorkBGM(string newDefaultWorkBGM)
+    {
+        var userSetting = GetUserSetting();
+        if (userSetting != null)
+        {
+            userSetting.DefaultWorkBGM = newDefaultWorkBGM;
+            _connection.Update(userSetting);
+        }
+    }
+
 
     public UserSetting GetUserSetting()
     {
-        string userId = UserSessionManager.Instance.UserId;
         return _connection.Table<UserSetting>().FirstOrDefault(u => u.UserID == userId);
     }
 
     public void DeleteUserSetting()
     {
-        string userId = UserSessionManager.Instance.UserId;
         var userSetting = GetUserSetting();
         if (userSetting != null)
         {
@@ -69,7 +115,6 @@ public class DatabaseManager : IDatabaseManager
 
     public List<WorkLog> GetWorkLogs()
     {
-        string userId = UserSessionManager.Instance.UserId;
         return _connection.Table<WorkLog>().Where(w => w.UserID == userId).ToList();
     }
 

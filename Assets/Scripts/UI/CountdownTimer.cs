@@ -65,16 +65,19 @@ public class CountdownTimer : MonoBehaviour
     {
         if (isCountingDown)
         {
+            timeSlider.value = _databaseManager.GetUserSetting().DefaultFocusTime / 5f;
             StopCountdown(false); // ユーザーが 'やめる' を押したことを示すために false を渡す
         }
         else
         {
+            _databaseManager.UpdateDefaultFocusTime(Mathf.RoundToInt(timeSlider.value * 5));
             StartCountdown();
         }
     }
 
     void StartCountdown()
     {
+
         isCountingDown = true;
         startButton.GetComponentInChildren<Text>().text = "やめる";
         timeSlider.interactable = false;
@@ -84,6 +87,7 @@ public class CountdownTimer : MonoBehaviour
     // StopCountdown に bool パラメータを追加して、カウントダウンの完了状態を示します
     void StopCountdown(bool completed)
     {
+
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;

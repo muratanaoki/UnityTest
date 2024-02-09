@@ -1,12 +1,16 @@
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
+using Zenject;
 
 
 public class PlayFabLogin : MonoBehaviour
 {
-    // PlayerProfileの定義は前の例と同じ
+    [Inject]
+    private IDatabaseManager _databaseManager;
 
+
+    // PlayerProfileの定義は前の例と同じ
     public static void GetPlayerData()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
@@ -44,7 +48,8 @@ public class PlayFabLogin : MonoBehaviour
     {
         Debug.Log("Logged in successfully!");
         Debug.Log("PlayFabID: " + result.PlayFabId);
-        // プレイヤーデータの取得を試みる
+
+        _databaseManager.InitializeUserSettings(result.PlayFabId);
         PlayerSession.Instance.SetPlayFabId(result.PlayFabId);
         PlayFabDataManager.Instance.GetPlayerProfile();
         PlayFabDataManager.Instance.GetButlerData();

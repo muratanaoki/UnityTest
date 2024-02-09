@@ -3,10 +3,12 @@ using PlayFab;
 using PlayFab.ClientModels;
 using PlayFab.Json;
 using UnityEngine;
+using Zenject;
 
 public class PlayFabDataManager : MonoBehaviour
 {
     public static PlayFabDataManager Instance;
+
 
     private void Awake()
     {

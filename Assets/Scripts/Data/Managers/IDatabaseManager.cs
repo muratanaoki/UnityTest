@@ -2,9 +2,13 @@
 
 public interface IDatabaseManager
 {
-    void InitializeUserSettings();
+    void InitializeUserSettings(string userId);
     void InsertUserSetting(UserSetting userSetting);
-    void UpdateUserSetting(UserSetting userSetting);
+    void UpdateDefaultFocusTime(int newDefaultFocusTime);
+    void UpdateDefaultMaxTime(int newDefaultMaxTime);
+    void UpdateDefaultMainBGM(string newDefaultMainBGM);
+    void UpdateDefaultVoice(string newDefaultVoice);
+    void UpdateDefaultWorkBGM(string newDefaultWorkBGM);
     void DeleteUserSetting();
     UserSetting GetUserSetting();
     void InsertWorkLog(WorkLog workLog);
