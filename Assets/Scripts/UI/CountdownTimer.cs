@@ -19,7 +19,7 @@ public class CountdownTimer : MonoBehaviour
     [Inject]
     private IDatabaseManager _databaseManager;
 
-    void Start()
+    public void InitializeAndStart()
     {
         UserSetting userSettings = _databaseManager.GetUserSetting();
         if (userSettings != null)
@@ -65,12 +65,12 @@ public class CountdownTimer : MonoBehaviour
     {
         if (isCountingDown)
         {
-            timeSlider.value = _databaseManager.GetUserSetting().DefaultFocusTime / 5f;
+
             StopCountdown(false); // ユーザーが 'やめる' を押したことを示すために false を渡す
         }
         else
         {
-            _databaseManager.UpdateDefaultFocusTime(Mathf.RoundToInt(timeSlider.value * 5));
+
             StartCountdown();
         }
     }
@@ -81,13 +81,13 @@ public class CountdownTimer : MonoBehaviour
         isCountingDown = true;
         startButton.GetComponentInChildren<Text>().text = "やめる";
         timeSlider.interactable = false;
+        _databaseManager.UpdateDefaultFocusTime(Mathf.RoundToInt(timeSlider.value * 5));
         sliderHandle.SetActive(false);
     }
 
     // StopCountdown に bool パラメータを追加して、カウントダウンの完了状態を示します
     void StopCountdown(bool completed)
     {
-
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;
@@ -100,7 +100,7 @@ public class CountdownTimer : MonoBehaviour
             PlayFabDataManager.Instance.UpdateButlerExperienceAndIntimacy(newExperiencePoints, newLevel);
         }
 
-        timeSlider.value = initialSliderValue;
+        timeSlider.value = _databaseManager.GetUserSetting().DefaultFocusTime / 5f;
         ResetTimer();
     }
 
