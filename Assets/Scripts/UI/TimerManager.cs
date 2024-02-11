@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System;
 using Zenject;
 
-public class CountdownTimer : MonoBehaviour
+public class TimerManager : MonoBehaviour
 {
     public Slider timeSlider;
     public Text countdownText;

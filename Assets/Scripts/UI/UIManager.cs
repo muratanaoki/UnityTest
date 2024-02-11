@@ -6,10 +6,7 @@ public class UIManager : MonoBehaviour
     public GameObject panelMenuBlackoutCurtain;
     public GameObject panelMenu;
     public GameObject panelSupport;
-    public CountdownTimer countdownTimer;
-    public GameObject canvasBGMDialog;
-    public GameObject panelBGMBlackoutCurtain;
-    public GameObject panelBGM;
+    public TimerManager timerManager;
 
     private void HandleInitializationCompleted(string playFabId)
     {
@@ -17,7 +14,7 @@ public class UIManager : MonoBehaviour
         {
             // ログインが成功し、PlayFabIdが返された場合の処理
             Debug.Log($"UIManager: Login succeeded. PlayFabId: {playFabId}");
-            countdownTimer.InitializeAndStart();
+            timerManager.InitializeAndStart();
             // ここでUIを更新したり、ユーザーに成功を通知したりします
         }
         else
@@ -43,7 +40,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         canvasMenuDialog.SetActive(false);
-        canvasBGMDialog.SetActive(false);
     }
 
     public void OnPanelMenuBlackoutCurtainClicked()
@@ -74,17 +70,5 @@ public class UIManager : MonoBehaviour
         panelMenuBlackoutCurtain.SetActive(true);
         panelMenu.SetActive(true);
         panelSupport.SetActive(false);
-    }
-
-    public void OpenCanvasBGMDialog()
-    {
-        canvasBGMDialog.SetActive(true);
-        panelBGMBlackoutCurtain.SetActive(true);
-        panelBGM.SetActive(true);
-    }
-
-    public void ToggleCanvasBGMDialog()
-    {
-        canvasBGMDialog.SetActive(!canvasBGMDialog.activeSelf);
     }
 }
