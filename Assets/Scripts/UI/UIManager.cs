@@ -3,10 +3,13 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject canvasMenuDialog;
-    public GameObject panelBlackoutCurtain;
+    public GameObject panelMenuBlackoutCurtain;
     public GameObject panelMenu;
     public GameObject panelSupport;
     public CountdownTimer countdownTimer;
+    public GameObject canvasBGMDialog;
+    public GameObject panelBGMBlackoutCurtain;
+    public GameObject panelBGM;
 
     private void HandleInitializationCompleted(string playFabId)
     {
@@ -40,13 +43,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         canvasMenuDialog.SetActive(false);
-        panelBlackoutCurtain.SetActive(false);
-        panelMenu.SetActive(false);
-        panelSupport.SetActive(false);
+        canvasBGMDialog.SetActive(false);
     }
 
-    // Panel Blackout Curtainがクリックされた時の処理
-    public void OnBlackoutCurtainClicked()
+    public void OnPanelMenuBlackoutCurtainClicked()
     {
         if (panelSupport.activeSelf)
         {
@@ -58,13 +58,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Panel Menu内のButton Supportがクリックされた時の処理
     public void TogglePanelSupport()
     {
         panelSupport.SetActive(!panelSupport.activeSelf);
     }
 
-    public void CloseCanvasMenuDialog()
+    public void ToggleCanvasMenuDialog()
     {
         canvasMenuDialog.SetActive(!canvasMenuDialog.activeSelf);
     }
@@ -72,9 +71,20 @@ public class UIManager : MonoBehaviour
     public void OpenCanvasMenuDialog()
     {
         canvasMenuDialog.SetActive(true);
-        panelBlackoutCurtain.SetActive(true);
+        panelMenuBlackoutCurtain.SetActive(true);
         panelMenu.SetActive(true);
         panelSupport.SetActive(false);
     }
 
+    public void OpenCanvasBGMDialog()
+    {
+        canvasBGMDialog.SetActive(true);
+        panelBGMBlackoutCurtain.SetActive(true);
+        panelBGM.SetActive(true);
+    }
+
+    public void ToggleCanvasBGMDialog()
+    {
+        canvasBGMDialog.SetActive(!canvasBGMDialog.activeSelf);
+    }
 }
