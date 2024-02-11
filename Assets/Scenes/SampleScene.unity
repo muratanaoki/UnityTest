@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 277401996}
   - component: {fileID: 277401995}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: Menu Dialog Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -811,7 +811,6 @@ MonoBehaviour:
   panelMenuBlackoutCurtain: {fileID: 1606619685}
   panelMenu: {fileID: 1108302368}
   panelSupport: {fileID: 1193168119}
-  timerManager: {fileID: 941274068}
 --- !u!4 &277401996
 Transform:
   m_ObjectHideFlags: 0
@@ -821,11 +820,11 @@ Transform:
   m_GameObject: {fileID: 277401994}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.07149899, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 65.7209, z: 0}
+  m_LocalScale: {x: 966.4844, y: 966.4844, z: 966.4844}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1531734263}
+  m_Father: {fileID: 315966215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279133401
 GameObject:
@@ -1080,6 +1079,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1606619686}
+  - {fileID: 277401996}
   m_Father: {fileID: 1531734263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6929,7 +6929,6 @@ Transform:
   - {fileID: 315966215}
   - {fileID: 195690633}
   - {fileID: 1025992340}
-  - {fileID: 277401996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546072468

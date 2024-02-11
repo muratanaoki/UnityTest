@@ -1,22 +1,44 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenuDialogManager : MonoBehaviour
 {
-    public GameObject dialogPanel;
+    public GameObject canvasMenuDialog;
+    public GameObject panelMenuBlackoutCurtain;
+    public GameObject panelMenu;
+    public GameObject panelSupport;
 
     void Start()
     {
-        dialogPanel.SetActive(false); // 初期状態ではダイアログを非表示にする
+        canvasMenuDialog.SetActive(false);
     }
 
-    public void ShowDialog()
+    public void OnPanelMenuBlackoutCurtainClicked()
     {
-        dialogPanel.SetActive(true); // ダイアログを表示
+        if (panelSupport.activeSelf)
+        {
+            panelSupport.SetActive(false);
+        }
+        else
+        {
+            canvasMenuDialog.SetActive(false);
+        }
     }
 
-    public void HideDialog()
+    public void TogglePanelSupport()
     {
-        dialogPanel.SetActive(false); // ダイアログを非表示
+        panelSupport.SetActive(!panelSupport.activeSelf);
+    }
+
+    public void ToggleCanvasMenuDialog()
+    {
+        canvasMenuDialog.SetActive(!canvasMenuDialog.activeSelf);
+    }
+
+    public void OpenCanvasMenuDialog()
+    {
+        canvasMenuDialog.SetActive(true);
+        panelMenuBlackoutCurtain.SetActive(true);
+        panelMenu.SetActive(true);
+        panelSupport.SetActive(false);
     }
 }
