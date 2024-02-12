@@ -29,9 +29,9 @@ public class MenuDialogManager : MonoBehaviour
         panelSupport.SetActive(!panelSupport.activeSelf);
     }
 
-    public void ToggleCanvasMenuDialog()
+    public void CloseCanvasMenuDialog()
     {
-        canvasMenuDialog.SetActive(!canvasMenuDialog.activeSelf);
+        canvasMenuDialog.SetActive(false);
     }
 
     public void OpenCanvasMenuDialog()

@@ -408,7 +408,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 156782771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 156782773}
+        m_TargetAssemblyTypeName: ButtonSupportToggleHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &156782771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,26 +468,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 156782768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 60332ea1a79094d0cb839e801505b56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 277401995}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: OnPanelMenuBlackoutCurtainClicked
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  manager: {fileID: 277401995}
 --- !u!1 &176936845
 GameObject:
   m_ObjectHideFlags: 0
@@ -7135,7 +7131,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1559355582}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1559355584}
+        m_TargetAssemblyTypeName: ButtonSupportHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1559355582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7183,26 +7191,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559355579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 60332ea1a79094d0cb839e801505b56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 277401995}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: TogglePanelSupport
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  manager: {fileID: 277401995}
 --- !u!1 &1562885261
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,7 +7399,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1565717061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1565717063}
+        m_TargetAssemblyTypeName: ButtonMenuCloseHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1565717061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7455,26 +7459,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565717058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ccff97fee35e46a9ba3d8bc9d7897e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 277401995}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: ToggleCanvasMenuDialog
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  manager: {fileID: 277401995}
 --- !u!1001 &1586615809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8177,6 +8165,7 @@ GameObject:
   - component: {fileID: 1606619688}
   - component: {fileID: 1606619687}
   - component: {fileID: 1606619690}
+  - component: {fileID: 1606619689}
   m_Layer: 5
   m_Name: Panel Menu Blackout Curtain
   m_TagString: Untagged
@@ -8243,7 +8232,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606619685}
   m_CullTransparentMesh: 1
---- !u!114 &1606619690
+--- !u!114 &1606619689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8260,9 +8249,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 277401995}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: OnPanelMenuBlackoutCurtainClicked
+        - m_Target: {fileID: 1606619690}
+          m_TargetAssemblyTypeName: PanelMenuBlackoutCurtainHander, Assembly-CSharp
+          m_MethodName: OnButtonClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8272,6 +8261,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1606619690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606619685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd607b72585eb41ef8687289be6c94b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 277401995}
 --- !u!1 &1610049017
 GameObject:
   m_ObjectHideFlags: 0
@@ -8723,6 +8725,7 @@ GameObject:
   - component: {fileID: 1696674381}
   - component: {fileID: 1696674380}
   - component: {fileID: 1696674379}
+  - component: {fileID: 1696674382}
   m_Layer: 5
   m_Name: Button Menu
   m_TagString: Untagged
@@ -8794,9 +8797,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277401995}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenCanvasMenuDialog
+      - m_Target: {fileID: 1696674382}
+        m_TargetAssemblyTypeName: ButtonMenuHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8844,6 +8847,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696674377}
   m_CullTransparentMesh: 1
+--- !u!114 &1696674382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696674377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e221e37fb4f44a19ac1710e59c00f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 277401995}
 --- !u!4 &1725528522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490576248761790154, guid: c708a3b79cd542b42bbfedb17e213bc1,
