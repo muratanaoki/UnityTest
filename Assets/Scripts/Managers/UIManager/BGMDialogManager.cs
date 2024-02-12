@@ -18,8 +18,8 @@ public class BGMDialogManager : MonoBehaviour
         panelBGM.SetActive(true);
     }
 
-    public void ToggleCanvasBGMDialog()
+    public void CloseCanvasBGMDialog()
     {
-        canvasBGMDialog.SetActive(!canvasBGMDialog.activeSelf);
+        canvasBGMDialog.SetActive(false);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ButtonMenuCloseHandler : MonoBehaviour
+public class CloseCanvasMenuDialogHandler : MonoBehaviour
 {
     public MenuDialogManager manager;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ButtonSupportToggleHandler : MonoBehaviour
+public class TogglePanelSupportHandler : MonoBehaviour
 {
     public MenuDialogManager manager;
 

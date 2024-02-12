@@ -12,7 +12,7 @@ public class MenuDialogManager : MonoBehaviour
         canvasMenuDialog.SetActive(false);
     }
 
-    public void OnPanelMenuBlackoutCurtainClicked()
+    public void OnPanelMenuBlackoutCurtain()
     {
         if (panelSupport.activeSelf)
         {
