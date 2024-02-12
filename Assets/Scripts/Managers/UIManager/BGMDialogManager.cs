@@ -22,4 +22,6 @@ public class BGMDialogManager : MonoBehaviour
     {
         canvasBGMDialog.SetActive(false);
     }
+
+
 }
