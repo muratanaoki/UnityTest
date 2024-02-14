@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: 4842ee6dc769a48f1898b4324debacc9, type: 3}
+  musicName: haru
 --- !u!1 &494160374
 GameObject:
   m_ObjectHideFlags: 0
@@ -4252,7 +4252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: d05406319a49a4e3193fca86a81ee84b, type: 3}
+  musicName: ame
 --- !u!1 &891051518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,7 +5091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: 76cf2eeb2578b4097b06faf400e7cdc0, type: 3}
+  musicName: natu
 --- !u!1 &1033045712
 GameObject:
   m_ObjectHideFlags: 0
@@ -10645,7 +10645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: c23d57e45887d4e25960eeeafdb1c037, type: 3}
+  musicName: umi
 --- !u!1 &1973038670
 GameObject:
   m_ObjectHideFlags: 0

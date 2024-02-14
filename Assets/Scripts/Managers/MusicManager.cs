@@ -1,9 +1,14 @@
 using UnityEngine;
+using Zenject;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
     public AudioSource musicSource;
+
+    [Inject]
+    private IDatabaseManager _databaseManager;
+
 
     void Awake()
     {
@@ -18,11 +23,13 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(string musicName)
     {
+        AudioClip clip = Resources.Load<AudioClip>("Audio/" + musicName);
         if (musicSource.clip != clip)
         {
             musicSource.clip = clip;
+            _databaseManager.UpdateDefaultMainBGM(musicName);
             musicSource.Play();
         }
         else if (!musicSource.isPlaying)

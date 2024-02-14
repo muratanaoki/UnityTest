@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayMusicHandler : MonoBehaviour
 {
-    public AudioClip musicClip;
+    public string musicName;
 
     public void OnButtonClick()
     {
-        MusicManager.instance.PlayMusic(musicClip);
+        MusicManager.instance.PlayMusic(musicName);
     }
 }
