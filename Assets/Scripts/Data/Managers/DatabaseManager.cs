@@ -26,7 +26,7 @@ public class DatabaseManager : IDatabaseManager
                 UserID = userId,
                 DefaultFocusTime = 5,
                 DefaultMaxTime = 120,
-                DefaultMainBGM = "初期BGM",
+                DefaultMainBGM = "mute",
                 DefaultVoice = "初期ボイス",
                 DefaultWorkBGM = "初期作業BGM"
             });

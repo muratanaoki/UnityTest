@@ -19,6 +19,7 @@ public class TimerManager : MonoBehaviour
     [Inject]
     private IDatabaseManager _databaseManager;
 
+
     private void HandleInitializationCompleted(string playFabId)
     {
         if (!string.IsNullOrEmpty(playFabId))
@@ -106,7 +107,8 @@ public class TimerManager : MonoBehaviour
 
     void StartCountdown()
     {
-
+        UserSetting user = _databaseManager.GetUserSetting();
+        MusicManager.instance.Test(user.DefaultWorkBGM);
         isCountingDown = true;
         startButton.GetComponentInChildren<Text>().text = "やめる";
         timeSlider.interactable = false;
@@ -117,6 +119,7 @@ public class TimerManager : MonoBehaviour
     // StopCountdown に bool パラメータを追加して、カウントダウンの完了状態を示します
     void StopCountdown(bool completed)
     {
+        MusicManager.instance.StopMusic();
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;

@@ -6,6 +6,6 @@ public class PlayMusicHandler : MonoBehaviour
 
     public void OnButtonClick()
     {
-        MusicManager.instance.PlayMusic(musicName);
+        MusicManager.instance.PlayWorkBGM(musicName);
     }
 }
