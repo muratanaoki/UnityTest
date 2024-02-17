@@ -19,7 +19,6 @@ public class TimerManager : MonoBehaviour
     [Inject]
     private IDatabaseManager _databaseManager;
 
-
     private void HandleInitializationCompleted(string playFabId)
     {
         if (!string.IsNullOrEmpty(playFabId))
@@ -62,8 +61,6 @@ public class TimerManager : MonoBehaviour
         timeSlider.minValue = 1;
         timeSlider.value = initialSliderValue;
         timeSlider.wholeNumbers = true;
-        timeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
-        startButton.onClick.AddListener(ToggleCountdown);
         SliderChanged();
     }
 
@@ -84,14 +81,14 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    void SliderChanged()
+    public void SliderChanged()
     {
         initialTime = timeSlider.value * 5 * 60;
         UpdateCountdownText();
         SetEndTime(initialTime);
     }
 
-    void ToggleCountdown()
+    public void ToggleCountdown()
     {
         if (isCountingDown)
         {
