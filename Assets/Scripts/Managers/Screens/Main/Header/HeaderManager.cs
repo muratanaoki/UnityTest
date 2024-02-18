@@ -10,6 +10,7 @@ public class HeaderManager : MonoBehaviour
     public GameObject buttonMenu;
     public GameObject buttonBGM;
 
+    public RewordDialogManager rewordDialogManager;
     public MenuDialogManager menuDialogManager;
     public BGMDialogManager bgmDialogManager;
 
@@ -61,5 +62,10 @@ public class HeaderManager : MonoBehaviour
     public void IsVisbleButtonBGM(bool isVisble)
     {
         buttonBGM.SetActive(isVisble);
+    }
+
+    public void OpenCanvasRewordDialog()
+    {
+        rewordDialogManager.OpenCanvasRewordDialog();
     }
 }

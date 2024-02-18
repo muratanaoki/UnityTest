@@ -24,17 +24,6 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void Test(string musicName)
-    {
-        AudioClip selectClip = Resources.Load<AudioClip>(path + musicName);
-        // If different music is played than the one currently playing, change the music.
-        musicSource.clip = selectClip;
-        _databaseManager.UpdateDefaultWorkBGM(musicName);
-        musicSource.Play();
-    }
-
-
     public void PlayWorkBGM(string musicName)
     {
         AudioClip selectClip = Resources.Load<AudioClip>(path + musicName);
@@ -49,9 +38,16 @@ public class MusicManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void StopMusic()
+    public void PlayMute()
     {
         _databaseManager.UpdateDefaultWorkBGM("mute");
         musicSource.Stop();
     }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
+
 }

@@ -6,6 +6,7 @@ public class MenuDialogManager : MonoBehaviour
     public GameObject panelMenuBlackoutCurtain;
     public GameObject panelMenu;
     public GameObject panelSupport;
+    public GameObject panelReword;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class MenuDialogManager : MonoBehaviour
         {
             panelSupport.SetActive(false);
         }
+        else if (panelReword.activeSelf)
+        {
+            panelReword.SetActive(false);
+        }
         else
         {
             canvasMenuDialog.SetActive(false);
@@ -27,6 +32,11 @@ public class MenuDialogManager : MonoBehaviour
     public void TogglePanelSupport()
     {
         panelSupport.SetActive(!panelSupport.activeSelf);
+    }
+
+    public void TogglePanelReword()
+    {
+        panelReword.SetActive(!panelReword.activeSelf);
     }
 
     public void CloseCanvasMenuDialog()
@@ -40,5 +50,6 @@ public class MenuDialogManager : MonoBehaviour
         panelMenuBlackoutCurtain.SetActive(true);
         panelMenu.SetActive(true);
         panelSupport.SetActive(false);
+        panelReword.SetActive(false);
     }
 }

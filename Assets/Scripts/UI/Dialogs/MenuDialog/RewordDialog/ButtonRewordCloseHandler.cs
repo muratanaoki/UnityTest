@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class TogglePanelSupportHandler : MonoBehaviour
+public class ButtonRewordCloseHandler : MonoBehaviour
 {
     public MenuDialogManager manager;
 
     public void OnButtonClick()
     {
-        manager.TogglePanelSupport();
+        manager.TogglePanelReword();
     }
 }

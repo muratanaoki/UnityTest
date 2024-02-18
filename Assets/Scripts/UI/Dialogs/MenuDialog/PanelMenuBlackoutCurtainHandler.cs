@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OnPanelMenuBlackoutCurtainHandler : MonoBehaviour
+public class PanelMenuBlackoutCurtainHandler : MonoBehaviour
 {
     public MenuDialogManager manager;
 
