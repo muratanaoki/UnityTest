@@ -6,11 +6,18 @@ public class HeaderManager : MonoBehaviour
 {
     public Slider experiencePoints;
     public Text intimacyLevel;
+
+    public GameObject buttonMenu;
+    public GameObject buttonBGM;
+
     public MenuDialogManager menuDialogManager;
     public BGMDialogManager bgmDialogManager;
 
+
     void Start()
     {
+        buttonMenu.SetActive(true);
+        buttonBGM.SetActive(false);
         UpdateUIFromSession();
     }
 
@@ -44,5 +51,15 @@ public class HeaderManager : MonoBehaviour
     public void OpenCanvasBGMDialog()
     {
         bgmDialogManager.OpenCanvasBGMDialog();
+    }
+
+    public void IsVisbleButtonMenu(bool isVisble)
+    {
+        buttonMenu.SetActive(isVisble);
+    }
+
+    public void IsVisbleButtonBGM(bool isVisble)
+    {
+        buttonBGM.SetActive(isVisble);
     }
 }

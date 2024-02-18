@@ -2029,9 +2029,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.38043678
+    x: 0.38036382
     y: 0
-    width: 0.23912646
+    width: 0.23927236
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4457,6 +4457,7 @@ MonoBehaviour:
   startButton: {fileID: 1014608764}
   sliderHandle: {fileID: 1460320967}
   maxTimeInMinutes: 120
+  headerManger: {fileID: 2040584433}
 --- !u!4 &941274069
 Transform:
   m_ObjectHideFlags: 0
@@ -11105,6 +11106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experiencePoints: {fileID: 1492914759}
   intimacyLevel: {fileID: 471217519}
+  buttonMenu: {fileID: 1696674377}
+  buttonBGM: {fileID: 1167248948}
   menuDialogManager: {fileID: 277401995}
   bgmDialogManager: {fileID: 962304463}
 --- !u!4 &2064156316 stripped

@@ -12,6 +12,8 @@ public class TimerManager : MonoBehaviour
     public GameObject sliderHandle;
     public int maxTimeInMinutes;
 
+    public HeaderManager headerManger;
+
     private float initialTime;
     private bool isCountingDown = false;
     private float initialSliderValue = 1;
@@ -92,12 +94,14 @@ public class TimerManager : MonoBehaviour
     {
         if (isCountingDown)
         {
-
+            headerManger.IsVisbleButtonMenu(true);
+            headerManger.IsVisbleButtonBGM(false);
             StopCountdown(false); // ユーザーが 'やめる' を押したことを示すために false を渡す
         }
         else
         {
-
+            headerManger.IsVisbleButtonMenu(false);
+            headerManger.IsVisbleButtonBGM(true);
             StartCountdown();
         }
     }
