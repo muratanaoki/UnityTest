@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayMusicHandler : MonoBehaviour
 {
+    public BGMDialogManager manager;
     public string musicName;
 
     public void OnButtonClick()
     {
-        MusicManager.instance.PlayWorkBGM(musicName);
+        manager.PlayWorkBGM(musicName);
     }
 }

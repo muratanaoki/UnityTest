@@ -105,7 +105,7 @@ public class TimerManager : MonoBehaviour
     void StartCountdown()
     {
         UserSetting user = _databaseManager.GetUserSetting();
-        MusicManager.instance.Test(user.DefaultWorkBGM);
+        MusicManager.instance.PlayWorkBGM(user.DefaultWorkBGM);
         isCountingDown = true;
         startButton.GetComponentInChildren<Text>().text = "やめる";
         timeSlider.interactable = false;

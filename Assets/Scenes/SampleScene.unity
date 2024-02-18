@@ -1861,6 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 962304463}
   musicName: haru
 --- !u!1 &494160374
 GameObject:
@@ -2028,9 +2029,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.39147848
+    x: 0.3994186
     y: 0
-    width: 0.21704307
+    width: 0.2011628
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4296,6 +4297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 962304463}
   musicName: ame
 --- !u!1 &891051518
 GameObject:
@@ -5161,6 +5163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 962304463}
   musicName: natu
 --- !u!1 &1033045712
 GameObject:
@@ -10749,6 +10752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f52ac36cdd4147b379a3d8e823b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 962304463}
   musicName: umi
 --- !u!1 &1973038670
 GameObject:

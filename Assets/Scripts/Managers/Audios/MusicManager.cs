@@ -38,29 +38,20 @@ public class MusicManager : MonoBehaviour
     public void PlayWorkBGM(string musicName)
     {
         AudioClip selectClip = Resources.Load<AudioClip>(path + musicName);
-        // If different music is played than the one currently playing, change the music.
+
         if (!selectClip)
         {
-            _databaseManager.UpdateDefaultWorkBGM("mute");
             StopMusic();
             return;
         }
-
-        if (musicSource.clip != selectClip)
-        {
-            musicSource.clip = selectClip;
-            _databaseManager.UpdateDefaultWorkBGM(musicName);
-            musicSource.Play();
-        }
-        else
-        {
-            _databaseManager.UpdateDefaultWorkBGM("mute");
-            StopMusic();
-        }
+        musicSource.clip = selectClip;
+        _databaseManager.UpdateDefaultWorkBGM(musicName);
+        musicSource.Play();
     }
 
     public void StopMusic()
     {
+        _databaseManager.UpdateDefaultWorkBGM("mute");
         musicSource.Stop();
     }
 }
