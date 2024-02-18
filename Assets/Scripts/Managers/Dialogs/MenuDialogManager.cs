@@ -52,4 +52,9 @@ public class MenuDialogManager : MonoBehaviour
         panelSupport.SetActive(false);
         panelReword.SetActive(false);
     }
+
+    public void OpenURL(string url)
+    {
+        Application.OpenURL(url);
+    }
 }

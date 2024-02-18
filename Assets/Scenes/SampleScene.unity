@@ -1619,6 +1619,7 @@ GameObject:
   - component: {fileID: 413753382}
   - component: {fileID: 413753381}
   - component: {fileID: 413753380}
+  - component: {fileID: 413753383}
   m_Layer: 5
   m_Name: Button Privacy Policy
   m_TagString: Untagged
@@ -1689,7 +1690,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 413753381}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 413753383}
+        m_TargetAssemblyTypeName: ButtonOpenURLHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &413753381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1741,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413753378}
   m_CullTransparentMesh: 1
+--- !u!114 &413753383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413753378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21abf9572564ba8a05fa582e42e503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://www.google.co.jp
 --- !u!1 &419325269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,9 +2436,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.39700228
+    x: 0.3494985
     y: 0
-    width: 0.20599546
+    width: 0.30100298
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2487,6 +2513,7 @@ GameObject:
   - component: {fileID: 547263317}
   - component: {fileID: 547263316}
   - component: {fileID: 547263315}
+  - component: {fileID: 547263318}
   m_Layer: 5
   m_Name: Button Terms of Service
   m_TagString: Untagged
@@ -2557,7 +2584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 547263316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 547263318}
+        m_TargetAssemblyTypeName: ButtonOpenURLHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &547263316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,6 +2635,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547263313}
   m_CullTransparentMesh: 1
+--- !u!114 &547263318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547263313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21abf9572564ba8a05fa582e42e503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://www.google.co.jp
 --- !u!1 &550495386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,6 +2660,7 @@ GameObject:
   - component: {fileID: 550495390}
   - component: {fileID: 550495389}
   - component: {fileID: 550495388}
+  - component: {fileID: 550495391}
   m_Layer: 5
   m_Name: Button Opinion Box
   m_TagString: Untagged
@@ -2678,7 +2731,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550495389}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 550495391}
+        m_TargetAssemblyTypeName: ButtonOpenURLHandler, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &550495389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2782,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550495386}
   m_CullTransparentMesh: 1
+--- !u!114 &550495391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550495386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21abf9572564ba8a05fa582e42e503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://www.google.co.jp
 --- !u!1 &554034956
 GameObject:
   m_ObjectHideFlags: 0
