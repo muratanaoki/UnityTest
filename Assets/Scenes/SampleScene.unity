@@ -2029,9 +2029,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.3994186
+    x: 0.38043678
     y: 0
-    width: 0.2011628
+    width: 0.23912646
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -5773,7 +5773,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1167248953}
-        m_TargetAssemblyTypeName: OpenCanvasBGMDialogHandler, Assembly-CSharp
+        m_TargetAssemblyTypeName: ButtonBGMHandler, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5831,10 +5831,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167248948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b67cfd1139d94634bdcdecee24f8163, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d4e74283932642b0867e10ded1bc69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 962304463}
+  manager: {fileID: 2040584433}
 --- !u!1 &1193168119
 GameObject:
   m_ObjectHideFlags: 0
@@ -9192,7 +9192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e221e37fb4f44a19ac1710e59c00f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 277401995}
+  manager: {fileID: 2040584433}
 --- !u!4 &1725528522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490576248761790154, guid: c708a3b79cd542b42bbfedb17e213bc1,
@@ -11066,7 +11066,7 @@ GameObject:
   - component: {fileID: 2040584432}
   - component: {fileID: 2040584433}
   m_Layer: 5
-  m_Name: Level Manager
+  m_Name: Header Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11100,11 +11100,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2040584431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e18f7e6b34024abc83fabc332d292be, type: 3}
+  m_Script: {fileID: 11500000, guid: e2bb8fe263bcb4b0e9e25319affb3b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   experiencePoints: {fileID: 1492914759}
   intimacyLevel: {fileID: 471217519}
+  menuDialogManager: {fileID: 277401995}
+  bgmDialogManager: {fileID: 962304463}
 --- !u!4 &2064156316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 425660, guid: 58ac37417e60e534f91138088a3e6f70,

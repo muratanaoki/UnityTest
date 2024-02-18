@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ButtonMenuHandler : MonoBehaviour
 {
-    public MenuDialogManager manager;
+    public HeaderManager manager;
 
     public void OnButtonClick()
     {

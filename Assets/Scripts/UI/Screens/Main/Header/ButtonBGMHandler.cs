@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class OpenCanvasBGMDialogHandler : MonoBehaviour
+public class ButtonBGMHandler : MonoBehaviour
 {
-    public BGMDialogManager manager;
+    public HeaderManager manager;
 
     public void OnButtonClick()
     {
