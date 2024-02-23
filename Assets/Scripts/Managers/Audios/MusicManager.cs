@@ -6,7 +6,9 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
     public AudioSource musicSource;
 
-    private const string path = "Audio/";
+    private const string pathWorkBGM = "WorkBGM/";
+
+    private const string pathDefaultBGM = "DefaultBGM/bgm";
 
     [Inject]
     private IDatabaseManager _databaseManager;
@@ -24,9 +26,17 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void PlayDefaultBGM()
+    {
+        AudioClip selectClip = Resources.Load<AudioClip>(pathDefaultBGM);
+        musicSource.clip = selectClip;
+        musicSource.Play();
+    }
+
     public void PlayWorkBGM(string musicName)
     {
-        AudioClip selectClip = Resources.Load<AudioClip>(path + musicName);
+        AudioClip selectClip = Resources.Load<AudioClip>(pathWorkBGM + musicName);
 
         if (!selectClip)
         {

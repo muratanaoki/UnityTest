@@ -26,9 +26,8 @@ public class DatabaseManager : IDatabaseManager
                 UserID = userId,
                 DefaultFocusTime = 5,
                 DefaultMaxTime = 120,
-                DefaultMainBGM = "mute",
                 DefaultVoice = "初期ボイス",
-                DefaultWorkBGM = "初期作業BGM"
+                DefaultWorkBGM = "mute"
             });
         }
     }
@@ -58,15 +57,6 @@ public class DatabaseManager : IDatabaseManager
         }
     }
 
-    public void UpdateDefaultMainBGM(string newDefaultMainBGM)
-    {
-        var userSetting = GetUserSetting();
-        if (userSetting != null)
-        {
-            userSetting.DefaultMainBGM = newDefaultMainBGM;
-            _connection.Update(userSetting);
-        }
-    }
 
     public void UpdateDefaultVoice(string newDefaultVoice)
     {

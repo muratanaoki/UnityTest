@@ -121,6 +121,7 @@ public class TimerManager : MonoBehaviour
     void StopCountdown(bool completed)
     {
         MusicManager.instance.StopMusic();
+        MusicManager.instance.PlayDefaultBGM();
         isCountingDown = false;
         startButton.GetComponentInChildren<Text>().text = "スタート";
         timeSlider.interactable = true;

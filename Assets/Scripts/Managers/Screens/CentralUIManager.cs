@@ -4,9 +4,6 @@ public class CentralUIManager : MonoBehaviour
 {
     public static CentralUIManager Instance { get; private set; }
 
-    // UI要素への参照
-    public GameObject buttonBGM;
-
     private void Awake()
     {
         if (Instance == null)
@@ -18,6 +15,11 @@ public class CentralUIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        MusicManager.instance.PlayDefaultBGM();
     }
 
     // UI要素の表示状態を切り替えるメソッド

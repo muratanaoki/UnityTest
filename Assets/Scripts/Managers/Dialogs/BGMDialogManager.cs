@@ -32,11 +32,13 @@ public class BGMDialogManager : MonoBehaviour
         UserSetting user = _databaseManager.GetUserSetting();
         if (user.DefaultWorkBGM == musicName)
         {
-            MusicManager.instance.StopMusic();
+            MusicManager.instance.PlayMute();
         }
         else
         {
             MusicManager.instance.PlayWorkBGM(musicName);
         }
     }
+
+
 }

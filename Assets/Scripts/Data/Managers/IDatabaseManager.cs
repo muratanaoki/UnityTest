@@ -6,7 +6,6 @@ public interface IDatabaseManager
     void InsertUserSetting(UserSetting userSetting);
     void UpdateDefaultFocusTime(int newDefaultFocusTime);
     void UpdateDefaultMaxTime(int newDefaultMaxTime);
-    void UpdateDefaultMainBGM(string newDefaultMainBGM);
     void UpdateDefaultVoice(string newDefaultVoice);
     void UpdateDefaultWorkBGM(string newDefaultWorkBGM);
     void DeleteUserSetting();
